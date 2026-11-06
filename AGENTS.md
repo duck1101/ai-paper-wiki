@@ -31,7 +31,7 @@
 .
 ├── AGENTS.md              專案規則（本文件）
 ├── CLAUDE.md              讓 Claude Code 載入本文件
-├── README.md              專案與作業說明
+├── README.md              專案介紹（GitHub 首頁顯示）
 ├── index.html             網站入口，唯一的 HTML 檔
 ├── .nojekyll              讓 GitHub Pages 原樣提供所有檔案
 ├── assets/

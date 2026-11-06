@@ -1,45 +1,34 @@
 # AI 論文 Wiki
 
-用繁體中文整理 AI 領域論文的知識庫網站，採用 Karpathy 的 LLM Wiki 模式：由 AI 依照 [AGENTS.md](AGENTS.md) 的規則，把每篇論文整合進持續累積的 Wiki，再發布成網頁。
+用繁體中文整理 AI 論文的知識庫。
 
-## 作業題目與要求
+**網站：** <https://duck1101.github.io/ai-paper-wiki/>
 
-生成式 AI 課程第九週作業：建立一個自己的 AGENTS.md 或 CLAUDE.md。
+讀論文時，筆記很容易一篇一篇散落各處，讀到後面也忘了前面的內容。這個 Wiki 想解決的就是這件事：每讀一篇新論文，除了留下摘要，也把新知識併入既有的概念頁和模型頁，讓內容互相連結、持續累積。
 
-- 設計一個小專案，並寫出讓 AI 理解專案規則、結構與開發方式的文件
-- 規則要能讓之後依同一套方式，繼續快速新增頁面或內容
-- 專案上傳 GitHub，並有一個可實際瀏覽的網頁
-- 繳交期限：11/16 23:59（遲交期限：11/17 16:00）
+做法參考 Andrej Karpathy 提出的 LLM Wiki：由我挑選論文、決定重點，AI 負責撰寫與維護交叉連結。維護規則都寫在 [AGENTS.md](AGENTS.md)。
 
-## 完成方式與重點
+## 目前收錄
 
-| 層 | 位置 | 說明 |
-|---|---|---|
-| 原始資料 | `raw/` | 論文 PDF，AI 只能讀取 |
-| 知識層 | `wiki/` | AI 撰寫的論文頁、概念頁、模型頁與相關文獻頁 |
-| 規則層 | `AGENTS.md`、`templates/` | 頁面格式、命名方式與工作流程 |
-| 網站 | `index.html`、`assets/` | 直接渲染 `wiki/` 的 Markdown，沒有建置步驟 |
+- **論文：** [Attention Is All You Need](wiki/papers/vaswani-2017-attention-is-all-you-need.md)（Vaswani et al., 2017）
+- **模型：** [Transformer](wiki/models/transformer.md)
+- **概念：** [自注意力](wiki/concepts/self-attention.md)、[多頭注意力](wiki/concepts/multi-head-attention.md)、[縮放點積注意力](wiki/concepts/scaled-dot-product-attention.md)、[位置編碼](wiki/concepts/positional-encoding.md)
+- **相關文獻：** [Bahdanau 2014](wiki/reference/bahdanau-2014-neural-machine-translation.md)、[BERT](wiki/reference/devlin-2018-bert.md)、[Vision Transformer](wiki/reference/dosovitskiy-2020-vision-transformer.md)（目前只讀過摘要）
 
-新增內容時只需新增 Markdown 並更新 `wiki/index.md`，不必修改網站程式。
+## 專案結構
 
-## 如何執行
+```text
+wiki/        所有內容，以 Markdown 撰寫
+templates/   各類頁面的範本
+raw/         論文原檔，不上傳
+assets/      網站的程式與樣式
+index.html   網站入口
+```
 
-在這個資料夾內啟動本機伺服器：
+網站沒有建置步驟，瀏覽器會直接讀取 `wiki/` 的 Markdown 來顯示，所以新增內容不用改程式。
+
+本機預覽：
 
 ```bash
 python -m http.server 8000
 ```
-
-然後開啟 <http://localhost:8000>。直接開啟 `index.html` 無法讀取 Markdown。
-
-## 如何新增內容
-
-1. 把論文 PDF 交給 AI。
-2. AI 依 AGENTS.md 把論文存進 `raw/papers/`，建立或更新相關頁面與 `wiki/index.md`，再回報重點與異動的頁面。
-3. 用本機伺服器檢查結果，再 commit 並 push。
-
-## 目前進度
-
-- [x] 專案規則、範本與網站外殼
-- [x] 匯入第一篇論文
-- [ ] 上傳 GitHub 並開啟 GitHub Pages
