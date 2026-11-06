@@ -26,9 +26,3 @@ index.html   網站入口
 ```
 
 網站沒有建置步驟，瀏覽器會直接讀取 `wiki/` 的 Markdown 來顯示，所以新增內容不用改程式。
-
-本機預覽：
-
-```bash
-python -m http.server 8000
-```
