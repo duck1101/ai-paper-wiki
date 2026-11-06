@@ -1,0 +1,145 @@
+/* 視覺規則見 AGENTS.md 第 10 節；色彩只在這裡定義。 */
+:root {
+  color-scheme: dark;
+  --paper: #1f1f1d;
+  --sidebar: #181816;
+  --ink: #e5e1d8;
+  --muted: #a19c90;
+  --line: #35342f;
+  --accent: #d9a75f;
+  --accent-soft: #33291b;
+  --code: #2a2926;
+  --figure: #ffffff;
+  --font: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+  --mono: "Cascadia Code", Consolas, Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 17rem minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+a { color: var(--accent); text-underline-offset: 0.2em; }
+
+/* 側欄 */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1.25rem;
+  background: var(--sidebar);
+  border-right: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.site-title {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sidebar h2 {
+  margin: 1.5rem 0 0.375rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.sidebar ul { margin: 0; padding: 0; list-style: none; }
+
+.sidebar li a {
+  display: block;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.sidebar li a:hover { background: var(--line); }
+
+.sidebar li a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sidebar .empty { margin: 0; padding: 0 0.5rem; color: var(--muted); font-size: 0.875rem; }
+
+/* 內文 */
+main { padding: 3rem 2rem 5rem; }
+
+article { max-width: 44em; margin: 0 auto; }
+
+article header { margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+
+h1 { margin: 0 0 0.5rem; font-size: 2rem; line-height: 1.35; overflow-wrap: anywhere; }
+
+article h2 { margin: 2.5rem 0 0.75rem; font-size: 1.375rem; line-height: 1.4; }
+
+article h3 { margin: 2rem 0 0.5rem; font-size: 1.125rem; line-height: 1.4; }
+
+.meta { margin: 0.25rem 0; color: var(--muted); font-size: 0.9375rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin: 0.625rem 0 0; }
+
+.tags span {
+  padding: 0.05rem 0.5rem;
+  border-radius: 4px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8125rem;
+}
+
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.25rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+}
+
+blockquote p { margin: 0.5rem 0; }
+
+table {
+  display: block;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+th, td { padding: 0.5rem 0.75rem; border: 1px solid var(--line); text-align: left; }
+
+th { background: var(--sidebar); }
+
+code { padding: 0.1em 0.3em; border-radius: 3px; background: var(--code); font-family: var(--mono); font-size: 0.875em; }
+
+pre { overflow-x: auto; padding: 1rem; border-radius: 4px; background: var(--code); line-height: 1.5; }
+
+pre code { padding: 0; background: none; }
+
+/* 論文圖是白底，保留原色並加上內距，避免貼齊深色背景 */
+img { max-width: 100%; height: auto; padding: 0.75rem; border-radius: 6px; background: var(--figure); }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; }
+
+@media (max-width: 800px) {
+  body { display: block; }
+  .sidebar { position: static; height: auto; padding: 1.25rem; border-right: 0; border-bottom: 1px solid var(--line); }
+  main { padding: 2rem 1.25rem 4rem; }
+  h1 { font-size: 1.625rem; }
+}
